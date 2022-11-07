@@ -3,9 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:idle_game/view/home_view.dart';
 import 'package:provider/provider.dart';
-
-import 'model/shared_prefs.dart';
-import 'model/user_model.dart';
+import 'model/user_shared_prefs.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,7 +12,7 @@ Future<void> main() async {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => User()),
+        ChangeNotifierProvider(create: (_) => UserSimplePrefs()),
       ],
       child: const MyApp(),
     ),
