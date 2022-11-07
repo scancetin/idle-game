@@ -1,29 +1,20 @@
-// ignore_for_file: unused_field
+// ignore_for_file: unused_field, avoid_print
 import 'package:flutter/material.dart';
 import 'package:idle_game/model/shared_prefs.dart';
 
 class User extends ChangeNotifier {
   late int _level;
-  late int _xp;
-  late int _nextlvlxp;
   late int _coin;
   late int _specialCoin;
 
   User() {
     _level = getLevel();
-    _xp = getXp();
-    _nextlvlxp = calcNextLvlXp();
     _coin = getCoin();
     _specialCoin = getSpecialCoin();
   }
 
   void setLevel() {
     UserSimplePrefs.setLevel();
-    notifyListeners();
-  }
-
-  void setXp(int xp) {
-    UserSimplePrefs.setXp(xp);
     notifyListeners();
   }
 
@@ -42,11 +33,6 @@ class User extends ChangeNotifier {
     return _level;
   }
 
-  int getXp() {
-    _xp = UserSimplePrefs.getXp();
-    return _xp;
-  }
-
   int getCoin() {
     _coin = UserSimplePrefs.getCoin();
     return _coin;
@@ -57,7 +43,18 @@ class User extends ChangeNotifier {
     return _specialCoin;
   }
 
-  int calcNextLvlXp() {
-    return getLevel() * 10;
+  void nextLvlCheck() {
+    print(_coin);
+    if (_coin > calcNextLvl()) {
+      print("asdsadsa");
+      UserSimplePrefs.setLevel();
+      _level = UserSimplePrefs.getLevel();
+    }
+
+    notifyListeners();
+  }
+
+  int calcNextLvl() {
+    return _level * 10;
   }
 }

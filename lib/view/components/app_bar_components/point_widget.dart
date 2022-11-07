@@ -11,11 +11,7 @@ class PointWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // print(UserSimplePrefs.getSpecialCoin());
-    // print(UserSimplePrefs.getCoin());
-
     return Consumer<User>(builder: (context, model, child) {
-      print(model.getCoin());
       return Container(
         decoration: BoxDecoration(
           color: Colors.white,
@@ -25,7 +21,7 @@ class PointWidget extends StatelessWidget {
         width: 75,
         child: Center(
           child: Text(
-            "${isSpecialCoin ? UserSimplePrefs.getSpecialCoin() : model.getCoin()} 💰",
+            "${isSpecialCoin ? model.getSpecialCoin() : model.getCoin()} 💰",
             style: TextStyle(fontSize: 13, color: Colors.black),
           ),
         ),

@@ -18,6 +18,7 @@ class CropPlot extends StatelessWidget {
         ),
         onTap: () {
           model.setCoin(1);
+          model.nextLvlCheck();
         },
       );
     });
