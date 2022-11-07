@@ -17,9 +17,9 @@ class HomeView extends StatelessWidget {
         leading: Icon(Icons.settings),
         title: Row(
           children: [
-            PointWidget(),
+            PointWidget(isSpecialCoin: true),
             SizedBox(width: 10),
-            PointWidget(),
+            PointWidget(isSpecialCoin: false),
             Spacer(),
             LevelWidget(),
           ],
