@@ -1,7 +1,8 @@
-// ignore_for_file: prefer_const_constructors, avoid_print
+// ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:idle_game/model/user_shared_prefs.dart';
+import 'package:idle_game/controller/user_stats_controller.dart';
+import 'package:idle_game/model/user_stats_model.dart';
 import 'package:provider/provider.dart';
 
 class PointWidget extends StatelessWidget {
@@ -10,21 +11,23 @@ class PointWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<UserSimplePrefs>(builder: (context, model, child) {
-      return Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        height: 25,
-        width: 75,
-        child: Center(
-          child: Text(
-            "${isSpecialCoin ? model.getSpecialCoin() : model.getCoin()} 💰",
+    UserStatsController userStatsCon = UserStatsController(context);
+
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      height: 25,
+      width: 75,
+      child: Center(
+        child: Consumer<UserStatsModel>(builder: (context, model, child) {
+          return Text(
+            "${userStatsCon.getCoinByType(isSpecialCoin)} 💰",
             style: TextStyle(fontSize: 13, color: Colors.black),
-          ),
-        ),
-      );
-    });
+          );
+        }),
+      ),
+    );
   }
 }

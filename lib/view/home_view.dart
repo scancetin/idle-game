@@ -1,8 +1,10 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:idle_game/controller/crop_controller.dart';
+import 'package:idle_game/controller/user_stats_controller.dart';
 import 'package:idle_game/model/crop_model.dart';
-import 'package:idle_game/model/user_shared_prefs.dart';
+import 'package:idle_game/model/user_stats_model.dart';
 import 'package:idle_game/view/layout/crop_plot_layout.dart';
 import 'package:idle_game/view/layout/sliding_panel_layout.dart';
 import 'package:provider/provider.dart';
@@ -15,18 +17,22 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    UserStatsController userStatsCon = UserStatsController(context);
+    CropController cropCon = CropController(context);
+
     return Scaffold(
       appBar: AppBar(
-        leading: Consumer2<UserSimplePrefs, CropModel>(builder: (context, userModel, cropModel, child) {
+        leading: Consumer2<UserStatsModel, CropModel>(builder: (context, userModel, cropModel, child) {
           return IconButton(
             icon: Icon(Icons.settings),
             onPressed: () {
-              cropModel.restartCrops();
-              userModel.restartStats();
+              cropCon.restartGame();
+              userStatsCon.restartGame();
             },
           );
         }),
         title: Row(
+          // ignore: prefer_const_literals_to_create_immutables
           children: [
             PointWidget(isSpecialCoin: true),
             SizedBox(width: 10),

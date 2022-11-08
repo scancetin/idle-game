@@ -1,20 +1,18 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:idle_game/model/crop_model.dart';
 import 'package:idle_game/view/home_view.dart';
 import 'package:provider/provider.dart';
-import 'model/user_shared_prefs.dart';
+import 'model/user_stats_model.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await UserSimplePrefs.init();
+  await UserStatsModel.init();
   await CropModel.init();
 
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => UserSimplePrefs()),
+        ChangeNotifierProvider(create: (_) => UserStatsModel()),
         ChangeNotifierProvider(create: (_) => CropModel()),
       ],
       child: const MyApp(),
@@ -31,7 +29,7 @@ class MyApp extends StatelessWidget {
       title: 'Idle Farm',
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
-      home: HomeView(),
+      home: const HomeView(),
     );
   }
 }

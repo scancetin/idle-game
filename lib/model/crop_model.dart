@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_print, unused_field
-
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -14,7 +12,7 @@ class CropModel extends ChangeNotifier {
   }
 
   int get plotSize => _prefs.getInt(_plotSize) ?? 4;
-  int get cropSize => _prefs.getInt(_cropSize) ?? 1;
+  int get cropSize => _prefs.getInt(_cropSize) ?? 0;
   List<String> get cropsById => _prefs.getStringList(_cropsById) ?? ["0"];
   int cropByPlotId(int plotId) => int.parse(cropsById[plotId - 1]);
 
@@ -37,30 +35,4 @@ class CropModel extends ChangeNotifier {
     await _prefs.setInt(_plotSize, 4);
     notifyListeners();
   }
-  // late int _plotSize;
-  // late int _cropSize;
-  // late List<int> _cropsById;
-
-  // CropModel() {
-  //   _plotSize = 4;
-  //   _cropSize = 1;
-  //   _cropsById = [0];
-  // }
-
-  // int get plotSize => _plotSize;
-  // int get cropSize => _cropSize;
-  // List<int> get cropsById => _cropsById;
-  // int cropByPlotId(int plotId) => _cropsById[plotId - 1];
-
-  // void addCrop(int cropId) {
-  //   _cropsById.add(cropId);
-  //   _cropSize++;
-  //   print(_cropsById);
-  //   notifyListeners();
-  // }
-
-  // void addPlot() {
-  //   _plotSize += 1;
-  //   notifyListeners();
-  // }
 }
