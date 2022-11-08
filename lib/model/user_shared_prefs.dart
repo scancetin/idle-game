@@ -33,7 +33,7 @@ class UserSimplePrefs extends ChangeNotifier {
   }
 
   void nextLvlCheck() {
-    print(getCoin());
+    // print(getCoin());
     if (getCoin() > calcNextLvl()) {
       setLevel();
     }
@@ -43,5 +43,13 @@ class UserSimplePrefs extends ChangeNotifier {
 
   int calcNextLvl() {
     return getLevel() * 10;
+  }
+
+  Future restartStats() async {
+    await _prefs.setInt(_level, 1);
+    await _prefs.setInt(_coin, 0);
+    await _prefs.setInt(_specialCoin, 0);
+
+    notifyListeners();
   }
 }

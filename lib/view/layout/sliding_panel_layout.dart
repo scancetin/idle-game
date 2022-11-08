@@ -2,8 +2,6 @@
 
 import 'package:flutter/material.dart';
 
-import '../components/crop_plot_components/crop_plot_line.dart';
-
 class SlidingPanelLayout extends StatelessWidget {
   const SlidingPanelLayout({Key? key}) : super(key: key);
 
@@ -25,15 +23,15 @@ class SlidingPanelLayout extends StatelessWidget {
           child: ListView(
             // ignore: prefer_const_literals_to_create_immutables
             children: [
-              CropPlotLine(),
-              CropPlotLine(),
-              CropPlotLine(),
-              CropPlotLine(),
-              CropPlotLine(),
-              CropPlotLine(),
-              CropPlotLine(),
-              CropPlotLine(),
-              CropPlotLine(),
+              // CropPlotLine(cropLineNo: 0),
+              // CropPlotLine(cropLineNo: 1),
+              // CropPlotLine(cropLineNo: 2),
+              // CropPlotLine(cropLineNo: 3),
+              // CropPlotLine(cropLineNo: 4),
+              // CropPlotLine(cropLineNo: 5),
+              // CropPlotLine(cropLineNo: 6),
+              // CropPlotLine(cropLineNo: 7),
+              // CropPlotLine(cropLineNo: 8),
             ],
           ),
         ),
