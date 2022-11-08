@@ -32,11 +32,11 @@ class CropController {
   }
 
   bool onCropClick(UserStatsController userStatsCon, int plotId, bool isSpecialCoin) {
-    if (cropSize() >= plotId) {
+    if (cropSize() > plotId) {
       int cropIncome = KCrop.cropIncomes[cropByPlotId(plotId)];
       userStatsCon.setCoinByType(isSpecialCoin, cropIncome);
       userStatsCon.setXp(cropIncome);
-    } else if (cropSize() + 1 == plotId) {
+    } else if (cropSize() == plotId) {
       return true;
     }
     return false;

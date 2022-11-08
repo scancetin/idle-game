@@ -13,7 +13,7 @@ class UserStatsModel extends ChangeNotifier {
   }
 
   int getLevel() => _prefs.getInt(_level) ?? 1;
-  int getCoin() => _prefs.getInt(_coin) ?? 0;
+  int getCoin() => _prefs.getInt(_coin) ?? 100;
   int getXp() => _prefs.getInt(_xp) ?? 10;
   int getSpecialCoin() => _prefs.getInt(_specialCoin) ?? 0;
 
@@ -39,7 +39,7 @@ class UserStatsModel extends ChangeNotifier {
 
   Future restartStats() async {
     await _prefs.setInt(_level, 1);
-    await _prefs.setInt(_coin, 0);
+    await _prefs.setInt(_coin, 100);
     await _prefs.setInt(_specialCoin, 0);
     await _prefs.setInt(_xp, 10);
     notifyListeners();

@@ -28,7 +28,7 @@ class CropPlot extends StatelessWidget {
 
   Widget cropCardWidget(CropController cropCon) {
     return Card(
-      color: cropCon.cropSize() >= plotId ? Colors.purple : Colors.black,
+      color: cropCon.cropSize() > plotId ? Colors.purple : Colors.black,
       child: Container(),
     );
   }

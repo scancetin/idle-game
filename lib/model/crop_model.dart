@@ -13,8 +13,8 @@ class CropModel extends ChangeNotifier {
 
   int get plotSize => _prefs.getInt(_plotSize) ?? 4;
   int get cropSize => _prefs.getInt(_cropSize) ?? 0;
-  List<String> get cropsById => _prefs.getStringList(_cropsById) ?? ["0"];
-  int cropByPlotId(int plotId) => int.parse(cropsById[plotId - 1]);
+  List<String> get cropsById => _prefs.getStringList(_cropsById) ?? [];
+  int cropByPlotId(int plotId) => int.parse(cropsById[plotId]);
 
   Future addCrop(int cropId) async {
     List<String> newList = cropsById;
@@ -30,8 +30,8 @@ class CropModel extends ChangeNotifier {
   }
 
   Future restartCrops() async {
-    await _prefs.setStringList(_cropsById, ["0"]);
-    await _prefs.setInt(_cropSize, 1);
+    await _prefs.setStringList(_cropsById, []);
+    await _prefs.setInt(_cropSize, 0);
     await _prefs.setInt(_plotSize, 4);
     notifyListeners();
   }
