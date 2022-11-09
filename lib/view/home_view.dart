@@ -5,6 +5,7 @@ import 'package:idle_game/controller/crop_controller.dart';
 import 'package:idle_game/controller/user_stats_controller.dart';
 import 'package:idle_game/model/crop_model.dart';
 import 'package:idle_game/model/user_stats_model.dart';
+import 'package:idle_game/util/constants.dart';
 import 'package:idle_game/view/layout/crop_plot_layout.dart';
 import 'package:idle_game/view/layout/sliding_panel_layout.dart';
 import 'package:provider/provider.dart';
@@ -22,8 +23,10 @@ class HomeView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: KSizer.appBarH,
         leading: Consumer2<UserStatsModel, CropModel>(builder: (context, userModel, cropModel, child) {
           return IconButton(
+            iconSize: KSizer.setIconS,
             icon: Icon(Icons.settings),
             onPressed: () {
               cropCon.restartGame();
@@ -35,7 +38,7 @@ class HomeView extends StatelessWidget {
           // ignore: prefer_const_literals_to_create_immutables
           children: [
             PointWidget(isSpecialCoin: true),
-            SizedBox(width: 10),
+            SizedBox(width: KSizer.pointSizedBoxW),
             PointWidget(isSpecialCoin: false),
             Spacer(),
             LevelWidget(),
@@ -45,7 +48,8 @@ class HomeView extends StatelessWidget {
       body: SlidingUpPanel(
         panel: SlidingPanelLayout(),
         color: Colors.black,
-        minHeight: 80,
+        minHeight: KSizer.panelMinH,
+        maxHeight: KSizer.panelMaxH,
         backdropEnabled: true,
         body: CropPlotLayout(),
       ),

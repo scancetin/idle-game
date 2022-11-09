@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:idle_game/model/user_stats_model.dart';
+import 'package:idle_game/util/constants.dart';
 import 'package:provider/provider.dart';
 import '../../../controller/user_stats_controller.dart';
 
@@ -17,13 +18,13 @@ class LevelWidget extends StatelessWidget {
         color: Colors.greenAccent,
         borderRadius: BorderRadius.circular(8),
       ),
-      height: 25,
-      width: 75,
+      height: KSizer.pointH,
+      width: KSizer.pointW,
       child: Consumer<UserStatsModel>(builder: (context, model, child) {
         return Center(
           child: Text(
             "Level ${userStatsCon.getLevel()}",
-            style: TextStyle(fontSize: 13, color: Colors.black),
+            style: TextStyle(fontSize: KSizer.pointTextS, color: Colors.black),
           ),
         );
       }),

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:idle_game/controller/user_stats_controller.dart';
 import 'package:idle_game/model/user_stats_model.dart';
+import 'package:idle_game/util/constants.dart';
 import 'package:provider/provider.dart';
 
 class PointWidget extends StatelessWidget {
@@ -18,13 +19,13 @@ class PointWidget extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(8),
       ),
-      height: 25,
-      width: 75,
+      height: KSizer.pointH,
+      width: KSizer.pointW,
       child: Center(
         child: Consumer<UserStatsModel>(builder: (context, model, child) {
           return Text(
             "${userStatsCon.getCoinByType(isSpecialCoin)} 💰",
-            style: TextStyle(fontSize: 13, color: Colors.black),
+            style: TextStyle(fontSize: KSizer.pointTextS, color: Colors.black),
           );
         }),
       ),

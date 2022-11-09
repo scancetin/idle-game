@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:idle_game/controller/crop_controller.dart';
 import 'package:idle_game/model/crop_model.dart';
+import 'package:idle_game/util/constants.dart';
 import 'package:provider/provider.dart';
 import '../components/crop_plot_components/crop_plot_line.dart';
 
@@ -14,7 +15,7 @@ class CropPlotLayout extends StatelessWidget {
     CropController cropCon = CropController(context);
 
     return Padding(
-      padding: EdgeInsets.only(left: 20, right: 20, top: 50, bottom: 120),
+      padding: EdgeInsets.only(bottom: KSizer.cropPaddingB, top: KSizer.cropPaddingT),
       child: Consumer<CropModel>(builder: (context, model, child) {
         return ListView.builder(
             itemCount: cropCon.plotSize(),

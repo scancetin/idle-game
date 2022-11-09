@@ -7,15 +7,13 @@ class CropPlotLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.width / 3 - 20,
-      child: Row(
-        children: [
-          Expanded(child: CropPlot(plotId: cropLineNo * 3 + 0)),
-          Expanded(child: CropPlot(plotId: cropLineNo * 3 + 1)),
-          Expanded(child: CropPlot(plotId: cropLineNo * 3 + 2)),
-        ],
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        CropPlot(plotId: cropLineNo * 3 + 0),
+        CropPlot(plotId: cropLineNo * 3 + 1),
+        CropPlot(plotId: cropLineNo * 3 + 2),
+      ],
     );
   }
 }

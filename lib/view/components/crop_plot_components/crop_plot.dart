@@ -31,7 +31,9 @@ class CropPlot extends StatelessWidget {
   Widget cropCardWidget(CropController cropCon) {
     return Card(
       color: cropCon.cropSize() > plotId ? Colors.purple : Colors.black,
-      child: Container(
+      child: SizedBox(
+        height: KSizer.cropPlotSize,
+        width: KSizer.cropPlotSize,
         child: cropCon.cropSize() > plotId ? Text(KCrop.cropNames[cropCon.cropByPlotId(plotId)]) : null,
       ),
     );
@@ -39,7 +41,7 @@ class CropPlot extends StatelessWidget {
 
   void _showMaterialDialog(BuildContext context) {
     showDialog(
-        barrierDismissible: false,
+        barrierDismissible: true,
         context: context,
         builder: (context) {
           return AlertDialogLayout();

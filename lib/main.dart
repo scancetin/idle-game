@@ -3,6 +3,7 @@ import 'package:idle_game/model/crop_model.dart';
 import 'package:idle_game/view/home_view.dart';
 import 'package:provider/provider.dart';
 import 'model/user_stats_model.dart';
+import 'package:sizer/sizer.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,11 +26,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Idle Farm',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
-      home: const HomeView(),
+    return Sizer(
+      builder: (context, orientation, deviceType) {
+        return MaterialApp(
+          title: 'Idle Farm',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData.dark(),
+          home: const HomeView(),
+        );
+      },
     );
   }
 }

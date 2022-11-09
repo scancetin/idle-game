@@ -1,8 +1,6 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors,
 
 import 'package:flutter/material.dart';
-import 'package:idle_game/controller/crop_controller.dart';
-import 'package:idle_game/controller/user_stats_controller.dart';
 import 'package:idle_game/model/crop_model.dart';
 import 'package:idle_game/model/user_stats_model.dart';
 import 'package:idle_game/util/constants.dart';
@@ -15,7 +13,7 @@ class AlertDialogLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async => false,
+      onWillPop: () async => true,
       child: AlertDialog(
         backgroundColor: Colors.amber,
         title: Consumer2<UserStatsModel, CropModel>(builder: (context, userModel, cropModel, child) {
@@ -40,7 +38,7 @@ class AlertDialogLayout extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context, true);
             },
-            child: Text("Close", style: TextStyle(color: Colors.black, fontSize: 20)),
+            child: Text("Close", style: TextStyle(color: Colors.black, fontSize: KSizer.textButtonSize)),
           ),
         ],
       ),

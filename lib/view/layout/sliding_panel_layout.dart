@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 class SlidingPanelLayout extends StatelessWidget {
   const SlidingPanelLayout({Key? key}) : super(key: key);
@@ -11,10 +12,10 @@ class SlidingPanelLayout extends StatelessWidget {
       children: [
         Row(
           children: [
-            Expanded(child: Card(color: Colors.red, child: Container(height: 70))),
-            Expanded(child: Card(color: Colors.red, child: Container(height: 70))),
-            Expanded(child: Card(color: Colors.red, child: Container(height: 70))),
-            Expanded(child: Card(color: Colors.red, child: Container(height: 70))),
+            Expanded(child: Card(color: Colors.red, child: Container(height: 10.h))),
+            Expanded(child: Card(color: Colors.red, child: Container(height: 10.h))),
+            Expanded(child: Card(color: Colors.red, child: Container(height: 10.h))),
+            Expanded(child: Card(color: Colors.red, child: Container(height: 10.h))),
           ],
         ),
         Container(

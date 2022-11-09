@@ -1,3 +1,5 @@
+import 'package:sizer/sizer.dart';
+
 class KCrop {
   static const List<String> cropNames = ["potato", "carrot", "tomato", "sunflower", "blueberry", "pumpkin", "strawberry", "corn", "eggplant", "watermelon"];
   static const List<int> cropIds = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -8,4 +10,20 @@ class KCrop {
 
 class KMessages {}
 
-class KDesign {}
+class KSizer {
+  static final double appBarH = 7.h;
+  static final double setIconS = 3.3.h;
+  static final double pointH = 3.3.h;
+  static final double pointW = 10.h;
+  static final double pointSizedBoxW = 2.h;
+  static final double pointTextS = 8.sp;
+
+  static final double cropPlotSize = 25.w;
+  static final double cropPaddingB = 20.h;
+  static final double cropPaddingT = 5.h;
+
+  static final double textButtonSize = 12.sp;
+
+  static final double panelMinH = 10.h;
+  static final double panelMaxH = 70.h;
+}
