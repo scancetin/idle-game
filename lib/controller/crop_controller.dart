@@ -24,8 +24,9 @@ class CropController {
     return cropModel.cropByPlotId(plotId);
   }
 
-  void addCropOrPlot(int cropId) {
+  void addCropOrPlot(int cropId, bool isSpecialCoin,UserStatsController userStatsCon) {
     cropModel.addCrop(cropId);
+    userStatsCon.setCoinByType(isSpecialCoin, -KCrop.cropPrices[cropId]);
     if (cropModel.cropSize > cropModel.plotSize * 3 - 3) {
       cropModel.addPlot();
     }
