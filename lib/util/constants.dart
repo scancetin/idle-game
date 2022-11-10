@@ -26,4 +26,6 @@ class KSizer {
 
   static final double panelMinH = 10.h;
   static final double panelMaxH = 70.h;
+  static final double panelMenuH = 10.h - 8;
+  static final double panelLevelUpH = panelMaxH - panelMinH;
 }

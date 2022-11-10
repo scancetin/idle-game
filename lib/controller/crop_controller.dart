@@ -24,7 +24,11 @@ class CropController {
     return cropModel.cropByPlotId(plotId);
   }
 
-  void addCropOrPlot(int cropId, bool isSpecialCoin,UserStatsController userStatsCon) {
+  String cropLevel(int cropIndex) {
+    return cropModel.cropsLevel[cropIndex];
+  }
+
+  void addCropOrPlot(int cropId, bool isSpecialCoin, UserStatsController userStatsCon) {
     cropModel.addCrop(cropId);
     userStatsCon.setCoinByType(isSpecialCoin, -KCrop.cropPrices[cropId]);
     if (cropModel.cropSize > cropModel.plotSize * 3 - 3) {
@@ -41,6 +45,11 @@ class CropController {
       return true;
     }
     return false;
+  }
+
+  void cropLevelUp(int cropIndex) {
+    cropModel.cropLevelUp(cropIndex);
+    print("cropindex : $cropIndex");
   }
 
   void restartGame() {

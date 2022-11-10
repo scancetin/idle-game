@@ -7,7 +7,7 @@ import 'package:idle_game/model/crop_model.dart';
 import 'package:idle_game/model/user_stats_model.dart';
 import 'package:idle_game/util/constants.dart';
 import 'package:idle_game/view/layout/crop_plot_layout.dart';
-import 'package:idle_game/view/layout/sliding_panel_layout.dart';
+import 'package:idle_game/view/layout/sliding_panel_layouts.dart/sliding_panel_layout.dart';
 import 'package:provider/provider.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'components/app_bar_components/level_widget.dart';
