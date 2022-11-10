@@ -38,10 +38,7 @@ class UserStatsModel extends ChangeNotifier {
   }
 
   Future restartStats() async {
-    await _prefs.setInt(_level, 1);
-    await _prefs.setInt(_coin, 100);
-    await _prefs.setInt(_specialCoin, 0);
-    await _prefs.setInt(_xp, 10);
+    _prefs.clear();
     notifyListeners();
   }
 }

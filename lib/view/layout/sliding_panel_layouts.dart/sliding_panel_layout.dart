@@ -25,16 +25,16 @@ class _SlidingPanelLayoutState extends State<SlidingPanelLayout> {
           // ignore: prefer_const_literals_to_create_immutables
           children: [
             //! level up corps
-            panelMenuWidget(PanelLevelUpLayout()),
+            panelMenuWidget("Corps", PanelLevelUpLayout()),
 
             //! inventory
-            panelMenuWidget(PanelInventoryLayout()),
+            panelMenuWidget("Inventory", PanelInventoryLayout()),
 
             //! decorations
-            panelMenuWidget(PanelDecorationsLayout()),
+            panelMenuWidget("Decorations", PanelDecorationsLayout()),
 
             //! power-ups
-            panelMenuWidget(PanelPowerUpsLayout()),
+            panelMenuWidget("Power-Ups", PanelPowerUpsLayout()),
           ],
         ),
         menuWidget
@@ -50,12 +50,16 @@ class _SlidingPanelLayoutState extends State<SlidingPanelLayout> {
     );
   }
 
-  Widget panelMenuWidget(Widget menuTab) {
+  Widget panelMenuWidget(String menuName, Widget menuTab) {
     return Expanded(
       child: GestureDetector(
         child: Card(
           color: Colors.red,
-          child: Container(height: KSizer.panelMenuH),
+          child: Container(
+            height: KSizer.panelMenuH,
+            alignment: Alignment.center,
+            child: Text(menuName, style: TextStyle(fontSize: KSizer.pointTextS)),
+          ),
         ),
         onTap: () {
           setState(() {

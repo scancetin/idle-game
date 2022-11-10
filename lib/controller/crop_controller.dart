@@ -28,12 +28,29 @@ class CropController {
     return cropModel.cropsLevel[cropIndex];
   }
 
-  void addCropOrPlot(int cropId, bool isSpecialCoin, UserStatsController userStatsCon) {
-    cropModel.addCrop(cropId);
+  int invCrop(int cropIndex) {
+    return int.parse(cropModel.invCrop[cropIndex]);
+  }
+
+  String invLevel(int cropIndex) {
+    return cropModel.invLevel[cropIndex];
+  }
+
+  int? invSize() {
+    return cropModel.invSize;
+  }
+
+  void addCrop(int cropId, int level, bool isSpecialCoin, UserStatsController userStatsCon) {
+    cropModel.addCrop(cropId, level);
     userStatsCon.setCoinByType(isSpecialCoin, -KCrop.cropPrices[cropId]);
-    if (cropModel.cropSize > cropModel.plotSize * 3 - 3) {
-      cropModel.addPlot();
-    }
+  }
+
+  void deleteCrop(int cropIndex) {
+    cropModel.deleteCrop(cropIndex);
+  }
+
+  void deleteFromInventory(int cropIndex) {
+    cropModel.deleteFromInventory(cropIndex);
   }
 
   bool onCropClick(UserStatsController userStatsCon, int plotId, bool isSpecialCoin) {
@@ -49,7 +66,10 @@ class CropController {
 
   void cropLevelUp(int cropIndex) {
     cropModel.cropLevelUp(cropIndex);
-    print("cropindex : $cropIndex");
+  }
+
+  void addToInventory(int cropIndex) {
+    cropModel.addToInventory(cropIndex);
   }
 
   void restartGame() {

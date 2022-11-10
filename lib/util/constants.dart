@@ -21,6 +21,7 @@ class KSizer {
   static final double cropPlotSize = 25.w;
   static final double cropPaddingB = 20.h;
   static final double cropPaddingT = 5.h;
+  static final double cropAddIcon = 10.h;
 
   static final double textButtonSize = 12.sp;
 

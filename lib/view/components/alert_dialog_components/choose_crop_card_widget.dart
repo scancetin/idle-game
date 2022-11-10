@@ -17,8 +17,8 @@ class ChooseCropCardWidget extends StatelessWidget {
         child: Text(KCrop.cropNames[cropId]),
       ),
       onTap: () {
-        if (userStatsCon.getCoinByType(false) > KCrop.cropPrices[cropId]) {
-          cropCon.addCropOrPlot(cropId, false, userStatsCon);
+        if (userStatsCon.getCoinByType(false) >= KCrop.cropPrices[cropId]) {
+          cropCon.addCrop(cropId, 1, false, userStatsCon);
           Navigator.pop(context, true);
         }
       },

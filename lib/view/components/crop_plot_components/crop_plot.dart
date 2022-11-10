@@ -34,7 +34,11 @@ class CropPlot extends StatelessWidget {
       child: SizedBox(
         height: KSizer.cropPlotSize,
         width: KSizer.cropPlotSize,
-        child: cropCon.cropSize() > plotId ? Text(KCrop.cropNames[cropCon.cropByPlotId(plotId)]) : null,
+        child: cropCon.cropSize() > plotId
+            ? Text(KCrop.cropNames[cropCon.cropByPlotId(plotId)])
+            : cropCon.cropSize() == plotId
+                ? Icon(Icons.add, size: KSizer.cropAddIcon)
+                : null,
       ),
     );
   }

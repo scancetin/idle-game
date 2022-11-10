@@ -30,12 +30,19 @@ class PanelLevelUpLayout extends StatelessWidget {
                   Text(KCrop.cropNames[cropCon.cropByPlotId(index)]),
                   Spacer(),
                   Text(cropCon.cropLevel(index)),
+                  Spacer(),
                   IconButton(
                     onPressed: () {
                       cropCon.cropLevelUp(index);
                     },
                     icon: Icon(Icons.plus_one),
-                  )
+                  ),
+                  IconButton(
+                      onPressed: () {
+                        cropCon.addToInventory(index);
+                        cropCon.deleteCrop(index);
+                      },
+                      icon: Icon(Icons.inventory)),
                 ],
               ),
             ));
