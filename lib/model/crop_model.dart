@@ -35,12 +35,9 @@ class CropModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  // Future deletePlot() async {
-  //   await _prefs.setInt(_plotSize, plotSize - 1);
-  // }
-
   Future changeCurrentPlot(int newPlot) async {
     await _prefs.setInt(_currentPlot, newPlot);
+    notifyListeners();
   }
 
   Future addCrop(int cropId, int level) async {
@@ -48,7 +45,7 @@ class CropModel extends ChangeNotifier {
     await _prefs.setStringList(_cropsLevel, cropsLevel + [level.toString()]);
     await _prefs.setInt(_cropSize, cropSize + 1);
 
-    if (cropSize % 12 == 0 && cropSize == plotSize * 3) addPlot();
+    if (cropSize == plotSize * 3) addPlot();
 
     notifyListeners();
   }
@@ -62,8 +59,6 @@ class CropModel extends ChangeNotifier {
     await _prefs.setStringList(_cropsById, newCropList);
     await _prefs.setStringList(_cropsLevel, newLevelList);
     await _prefs.setInt(_cropSize, cropSize - 1);
-
-    // if (cropSize % 3 == 2 && plotSize > 4) deletePlot();
 
     notifyListeners();
   }

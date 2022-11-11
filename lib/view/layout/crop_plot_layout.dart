@@ -24,9 +24,9 @@ class CropPlotLayout extends StatelessWidget {
           children: [
             Expanded(
               child: ListView.builder(
-                  itemCount: cropCon.plotSize(),
+                  itemCount: 4,
                   itemBuilder: (context, index) {
-                    return CropPlotLine(cropLineNo: index);
+                    return CropPlotLine(cropLineNo: index, currentPlot: cropCon.currentPlot());
                   }),
             ),
             Row(
