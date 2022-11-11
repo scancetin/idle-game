@@ -36,7 +36,7 @@ class UserStatsController {
   void idleIncome(CropController cropCon) {
     Timer.periodic(const Duration(seconds: 1), (timer) {
       setCoinByType(false, incomePerSecond(cropCon));
-      print(incomePerSecond(cropCon));
+      // print(incomePerSecond(cropCon));
     });
   }
 
@@ -45,15 +45,15 @@ class UserStatsController {
     int revForSec = 0;
 
     while (i < cropCon.cropSize()) {
-      revForSec += calcCropIncome(KCrop.cropIncomes[cropCon.cropByPlotId(i)], int.parse(cropCon.cropLevel(i)));
+      revForSec += calcCropIncome(KCrop.cropIncomes[cropCon.cropByPlotId(i)], cropCon.cropLevel(i));
       i++;
     }
     return revForSec;
   }
 
   //! listView ile sonsuz tarla yapmak yerine 12 slotluk sonsuz tarla yapmak daha mantıklı,
-  //! bunun için plotSize'ı tarla adeti olarak kullanıp, sağa ve sola birer geçiş butonu koyabiliriz.
-  //! mantıksal işlemler için -> listView buildera cropSize yerine 12 verilir,
+  //!
+  //!
 
   //!!! functions for game - create class for functions, this will be complex
   //! write function for level-xp
@@ -62,7 +62,7 @@ class UserStatsController {
   }
 
   //! write function for cropIncome - level
-  int calcCropIncome(int cropIncome, int cropLevel) {
+  int calcCropIncome(int cropIncome, String cropLevel) {
     return cropIncome;
   }
 

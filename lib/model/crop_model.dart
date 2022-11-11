@@ -7,6 +7,7 @@ class CropModel extends ChangeNotifier {
   static late SharedPreferences _prefs;
   static const String _plotSize = "plotSize";
   static const String _cropSize = "cropSize";
+  static const String _currentPlot = "cPlot";
 
   static const String _cropsById = "cropsById";
   static const String _cropsLevel = "cropsLevel";
@@ -20,22 +21,26 @@ class CropModel extends ChangeNotifier {
 
   int get plotSize => _prefs.getInt(_plotSize) ?? 4;
   int get cropSize => _prefs.getInt(_cropSize) ?? 0;
+  int get currentPlot => _prefs.getInt(_currentPlot) ?? 0;
 
   List<String> get cropsById => _prefs.getStringList(_cropsById) ?? [];
   List<String> get cropsLevel => _prefs.getStringList(_cropsLevel) ?? [];
-  int cropByPlotId(int plotId) => int.parse(cropsById[plotId]);
 
   List<String> get invCrop => _prefs.getStringList(_inventoryCrop) ?? [];
   List<String> get invLevel => _prefs.getStringList(_inventoryLevel) ?? [];
   int? get invSize => _prefs.getStringList(_inventoryCrop)?.length;
 
   Future addPlot() async {
-    await _prefs.setInt(_plotSize, plotSize + 1);
+    await _prefs.setInt(_plotSize, plotSize + 4);
     notifyListeners();
   }
 
-  Future deletePlot() async {
-    await _prefs.setInt(_plotSize, plotSize - 1);
+  // Future deletePlot() async {
+  //   await _prefs.setInt(_plotSize, plotSize - 1);
+  // }
+
+  Future changeCurrentPlot(int newPlot) async {
+    await _prefs.setInt(_currentPlot, newPlot);
   }
 
   Future addCrop(int cropId, int level) async {
@@ -43,7 +48,7 @@ class CropModel extends ChangeNotifier {
     await _prefs.setStringList(_cropsLevel, cropsLevel + [level.toString()]);
     await _prefs.setInt(_cropSize, cropSize + 1);
 
-    if (cropSize > plotSize * 3 - 3) addPlot();
+    if (cropSize % 12 == 0 && cropSize == plotSize * 3) addPlot();
 
     notifyListeners();
   }
@@ -58,7 +63,7 @@ class CropModel extends ChangeNotifier {
     await _prefs.setStringList(_cropsLevel, newLevelList);
     await _prefs.setInt(_cropSize, cropSize - 1);
 
-    if (cropSize % 3 == 2 && plotSize > 4) deletePlot();
+    // if (cropSize % 3 == 2 && plotSize > 4) deletePlot();
 
     notifyListeners();
   }

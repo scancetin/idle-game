@@ -17,12 +17,16 @@ class CropController {
     return cropModel.plotSize;
   }
 
+  int currentPlot() {
+    return cropModel.currentPlot;
+  }
+
   int cropSize() {
     return cropModel.cropSize;
   }
 
   int cropByPlotId(int plotId) {
-    return cropModel.cropByPlotId(plotId);
+    return int.parse(cropModel.cropsById[plotId]);
   }
 
   String cropLevel(int cropIndex) {
@@ -48,6 +52,10 @@ class CropController {
 
   void deleteCrop(int cropIndex) {
     cropModel.deleteCrop(cropIndex);
+  }
+
+  void changeCurrentPlot(int newPlot) {
+    cropModel.changeCurrentPlot(newPlot);
   }
 
   void deleteFromInventory(int cropIndex) {
