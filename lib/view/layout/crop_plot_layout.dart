@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:idle_game/controller/crop_controller.dart';
+import 'package:idle_game/controller/user_stats_controller.dart';
 import 'package:idle_game/model/crop_model.dart';
 import 'package:idle_game/util/constants.dart';
 import 'package:provider/provider.dart';
@@ -13,6 +14,8 @@ class CropPlotLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CropController cropCon = CropController(context);
+    UserStatsController userStatsCon = UserStatsController(context);
+    userStatsCon.idleRevenue(cropCon);
 
     return Padding(
       padding: EdgeInsets.only(bottom: KSizer.cropPaddingB, top: KSizer.cropPaddingT),

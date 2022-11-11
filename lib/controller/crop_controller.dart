@@ -1,8 +1,9 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/cupertino.dart';
 import 'package:idle_game/controller/user_stats_controller.dart';
 import 'package:idle_game/model/crop_model.dart';
 import 'package:provider/provider.dart';
-
 import '../util/constants.dart';
 
 class CropController {

@@ -18,6 +18,7 @@ class CropPlot extends StatelessWidget {
     UserStatsController userStatsCon = UserStatsController(context);
     CropController cropCon = CropController(context);
 
+
     return Consumer2<UserStatsModel, CropModel>(builder: (context, userModel, cropModel, child) {
       return GestureDetector(
         child: cropCardWidget(cropCon),
