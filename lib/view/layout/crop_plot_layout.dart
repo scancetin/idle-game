@@ -15,7 +15,7 @@ class CropPlotLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     CropController cropCon = CropController(context);
     UserStatsController userStatsCon = UserStatsController(context);
-    userStatsCon.idleRevenue(cropCon);
+    userStatsCon.idleIncome(cropCon);
 
     return Padding(
       padding: EdgeInsets.only(bottom: KSizer.cropPaddingB, top: KSizer.cropPaddingT),
