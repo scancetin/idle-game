@@ -31,8 +31,6 @@ class CalcFunctions {
   }
 
   int calcCropLevelUp(int cropLevel, int cropPrice) {
-    print(cropLevel);
-    print(cropPrice);
     return cropPrice;
   }
 }

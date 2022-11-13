@@ -1,9 +1,8 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:idle_game/controller/crop_controller.dart';
 import 'package:idle_game/model/crop_model.dart';
 import 'package:idle_game/util/constants.dart';
+import 'package:idle_game/view/components/sliding_panel_components/inventory_card.dart';
 import 'package:provider/provider.dart';
 
 class PanelInventoryLayout extends StatelessWidget {
@@ -20,24 +19,7 @@ class PanelInventoryLayout extends StatelessWidget {
         return ListView.builder(
           itemCount: cropCon.invSize() ?? 0,
           itemBuilder: (context, index) {
-            return Card(
-                child: Container(
-              height: 50,
-              color: Colors.red,
-              child: Row(
-                children: [
-                  Text(KCrop.cropNames[cropCon.invCrop(index)]),
-                  Spacer(),
-                  Text(cropCon.invLevel(index)),
-                  Spacer(),
-                  IconButton(
-                      onPressed: () {
-                        cropCon.deleteFromInventory(index);
-                      },
-                      icon: Icon(Icons.upcoming)),
-                ],
-              ),
-            ));
+            return InventoryCard(index: index);
           },
         );
       }),

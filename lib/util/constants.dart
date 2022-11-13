@@ -28,5 +28,10 @@ class KSizer {
   static final double panelMinH = 10.h;
   static final double panelMaxH = 70.h;
   static final double panelMenuH = 10.h - 8;
+  static final double panelMenuTextS = 11.sp;
+
   static final double panelLevelUpH = panelMaxH - panelMinH;
+  static final double panelListTileH = 7.h;
+  static final double panelCropImage = 6.h;
+  static final double panelLevelUpCardW = 20.w;
 }

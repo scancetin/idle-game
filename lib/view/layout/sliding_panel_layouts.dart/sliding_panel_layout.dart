@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, sized_box_for_whitespace
-
 import 'package:flutter/material.dart';
 import 'package:idle_game/util/constants.dart';
 import 'package:idle_game/view/layout/sliding_panel_layouts.dart/panel_decorations_layout.dart';
@@ -15,37 +13,28 @@ class SlidingPanelLayout extends StatefulWidget {
 }
 
 class _SlidingPanelLayoutState extends State<SlidingPanelLayout> {
-  Widget menuWidget = PanelLevelUpLayout();
+  Widget menuWidget = const PanelLevelUpLayout();
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Row(
-          // ignore: prefer_const_literals_to_create_immutables
           children: [
             //! level up corps
-            panelMenuWidget("Corps", PanelLevelUpLayout()),
+            panelMenuWidget("Corps", const PanelLevelUpLayout()),
 
             //! inventory
-            panelMenuWidget("Inventory", PanelInventoryLayout()),
+            panelMenuWidget("Inventory", const PanelInventoryLayout()),
 
             //! decorations
-            panelMenuWidget("Decorations", PanelDecorationsLayout()),
+            panelMenuWidget("Decorations", const PanelDecorationsLayout()),
 
             //! power-ups
-            panelMenuWidget("Power-Ups", PanelPowerUpsLayout()),
+            panelMenuWidget("Power-Ups", const PanelPowerUpsLayout()),
           ],
         ),
         menuWidget
-        // Container(
-        //   height: 422,
-        //   padding: EdgeInsets.only(left: 20, right: 20, bottom: 20, top: 20),
-        //   child: ListView(
-        //     // ignore: prefer_const_literals_to_create_immutables
-        //     children: [],
-        //   ),
-        // ),
       ],
     );
   }
@@ -58,7 +47,7 @@ class _SlidingPanelLayoutState extends State<SlidingPanelLayout> {
           child: Container(
             height: KSizer.panelMenuH,
             alignment: Alignment.center,
-            child: Text(menuName, style: TextStyle(fontSize: KSizer.pointTextS)),
+            child: Text(menuName, style: TextStyle(fontSize: KSizer.panelMenuTextS)),
           ),
         ),
         onTap: () {
