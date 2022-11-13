@@ -37,17 +37,14 @@ class CropPlotLayout extends StatelessWidget {
                       if (cropCon.currentPlot() > 0) {
                         cropCon.changeCurrentPlot(cropCon.currentPlot() - 1);
                       }
-                      print("left: " + cropCon.currentPlot().toString());
                     },
                     icon: Icon(Icons.turn_left),
                     iconSize: KSizer.setIconS * 2),
                 IconButton(
                     onPressed: () {
-                      if (cropCon.currentPlot() < cropCon.plotSize() / 4) {
+                      if (cropCon.currentPlot() < (cropCon.plotSize() / 4) - 1) {
                         cropCon.changeCurrentPlot(cropCon.currentPlot() + 1);
                       }
-                      print("right: " + cropCon.currentPlot().toString());
-                      print("plotsize: " + cropCon.plotSize().toString());
                     },
                     icon: Icon(Icons.turn_right),
                     iconSize: KSizer.setIconS * 2),

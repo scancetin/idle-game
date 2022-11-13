@@ -3,11 +3,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:idle_game/controller/user_stats_controller.dart';
 import 'package:idle_game/model/crop_model.dart';
+import 'package:idle_game/util/calc_funtions.dart';
 import 'package:provider/provider.dart';
 import '../util/constants.dart';
 
 class CropController {
   late CropModel cropModel;
+  final CalcFunctions calcFuncs = CalcFunctions();
 
   CropController(BuildContext context) {
     cropModel = Provider.of<CropModel>(context, listen: false);
@@ -33,6 +35,10 @@ class CropController {
     return cropModel.cropsLevel[cropIndex];
   }
 
+  int? invSize() {
+    return cropModel.invSize;
+  }
+
   int invCrop(int cropIndex) {
     return int.parse(cropModel.invCrop[cropIndex]);
   }
@@ -41,13 +47,15 @@ class CropController {
     return cropModel.invLevel[cropIndex];
   }
 
-  int? invSize() {
-    return cropModel.invSize;
+  void addCrop(int cropId, int level, UserStatsController userStatsCon) {
+    cropModel.addCrop(cropId, level);
+    userStatsCon.setCoin(-calcFuncs.calcCropPrice(KCrop.cropPrices[cropId], cropModel.cropSize, cropModel.invSize));
+    // userStatsCon.setCoinByType(isSpecialCoin, -KCrop.cropPrices[cropId]);
   }
 
-  void addCrop(int cropId, int level, bool isSpecialCoin, UserStatsController userStatsCon) {
-    cropModel.addCrop(cropId, level);
-    userStatsCon.setCoinByType(isSpecialCoin, -KCrop.cropPrices[cropId]);
+  void cropLevelUp(int cropIndex, UserStatsController userStatsCon) {
+    cropModel.cropLevelUp(cropIndex);
+    userStatsCon.setCoin(-calcFuncs.calcCropLevelUp(int.parse(cropModel.cropsLevel[cropIndex]), KCrop.cropPrices[cropByPlotId(cropIndex)]));
   }
 
   void deleteCrop(int cropIndex) {
@@ -58,27 +66,23 @@ class CropController {
     cropModel.changeCurrentPlot(newPlot);
   }
 
+  void addToInventory(int cropIndex) {
+    cropModel.addToInventory(cropIndex);
+  }
+
   void deleteFromInventory(int cropIndex) {
     cropModel.deleteFromInventory(cropIndex);
   }
 
-  bool onCropClick(UserStatsController userStatsCon, int plotId, bool isSpecialCoin) {
+  bool onCropClick(UserStatsController userStatsCon, int plotId) {
     if (cropSize() > plotId) {
-      int cropIncome = KCrop.cropIncomes[cropByPlotId(plotId)];
-      userStatsCon.setCoinByType(isSpecialCoin, cropIncome);
-      userStatsCon.setXp(cropIncome);
+      int cropIncome = calcFuncs.calcCropIncome(KCrop.cropIncomes[cropByPlotId(plotId)], cropModel.cropsLevel[plotId]);
+      userStatsCon.setCoin(cropIncome);
+      userStatsCon.setXp(KCrop.cropIncomes[cropByPlotId(plotId)]);
     } else if (cropSize() == plotId) {
       return true;
     }
     return false;
-  }
-
-  void cropLevelUp(int cropIndex) {
-    cropModel.cropLevelUp(cropIndex);
-  }
-
-  void addToInventory(int cropIndex) {
-    cropModel.addToInventory(cropIndex);
   }
 
   void restartGame() {

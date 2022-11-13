@@ -7,8 +7,11 @@ import 'package:idle_game/model/user_stats_model.dart';
 import 'package:idle_game/util/constants.dart';
 import 'package:provider/provider.dart';
 
+import '../util/calc_funtions.dart';
+
 class UserStatsController {
   late UserStatsModel userModel;
+  final CalcFunctions calcFuncs = CalcFunctions();
 
   //!!! consumer olmadan refreshleme işlemi nasıl yapılıyor ???
 
@@ -24,50 +27,21 @@ class UserStatsController {
     return isSpecialCoin ? userModel.getSpecialCoin() : userModel.getCoin();
   }
 
-  void setCoinByType(bool isSpecialCoin, int coin) {
-    isSpecialCoin ? userModel.setSpecialCoin(coin) : userModel.setCoin(coin);
+  void setCoin(int coin) {
+    userModel.setCoin(coin);
   }
 
   void setXp(int xp) {
+    print(xp);
     userModel.setXp(xp);
-    userModel.setLevel(calcLevel());
+    userModel.setLevel(calcFuncs.calcLevel(userModel.getXp(), userModel.getLevel()));
   }
 
   void idleIncome(CropController cropCon) {
     Timer.periodic(const Duration(seconds: 1), (timer) {
-      setCoinByType(false, incomePerSecond(cropCon));
-      // print(incomePerSecond(cropCon));
+      setCoin(calcFuncs.incomePerSecond(cropCon));
+      // print(calcFuncs.incomePerSecond(cropCon));
     });
-  }
-
-  int incomePerSecond(CropController cropCon) {
-    int i = 0;
-    int revForSec = 0;
-
-    while (i < cropCon.cropSize()) {
-      revForSec += calcCropIncome(KCrop.cropIncomes[cropCon.cropByPlotId(i)], cropCon.cropLevel(i));
-      i++;
-    }
-    return revForSec;
-  }
-
-  //! listView ile sonsuz tarla yapmak yerine 12 slotluk sonsuz tarla yapmak daha mantıklı,
-  //!
-  //!
-
-  //!!! functions for game - create class for functions, this will be complex
-  //! write function for level-xp
-  int calcLevel() {
-    return userModel.getXp() ~/ 10;
-  }
-
-  //! write function for cropIncome - level
-  int calcCropIncome(int cropIncome, String cropLevel) {
-    return cropIncome;
-  }
-
-  int calcCropPrice(int cropPrice, int cropSize, int plotSize) {
-    return 0;
   }
 
   void restartGame() {
