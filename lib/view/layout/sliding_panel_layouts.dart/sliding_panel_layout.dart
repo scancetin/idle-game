@@ -13,7 +13,7 @@ class SlidingPanelLayout extends StatefulWidget {
 }
 
 class _SlidingPanelLayoutState extends State<SlidingPanelLayout> {
-  Widget menuWidget = const PanelLevelUpLayout();
+  Widget _menuWidget = const PanelLevelUpLayout();
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class _SlidingPanelLayoutState extends State<SlidingPanelLayout> {
             panelMenuWidget("Power-Ups", const PanelPowerUpsLayout()),
           ],
         ),
-        menuWidget
+        _menuWidget
       ],
     );
   }
@@ -52,7 +52,7 @@ class _SlidingPanelLayoutState extends State<SlidingPanelLayout> {
         ),
         onTap: () {
           setState(() {
-            menuWidget = menuTab;
+            _menuWidget = menuTab;
           });
         },
       ),

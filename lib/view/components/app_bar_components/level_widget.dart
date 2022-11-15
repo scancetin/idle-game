@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:idle_game/model/user_stats_model.dart';
 import 'package:idle_game/util/constants.dart';
@@ -16,7 +14,7 @@ class LevelWidget extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Colors.greenAccent,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(6),
       ),
       height: KSizer.pointH,
       width: KSizer.pointW,

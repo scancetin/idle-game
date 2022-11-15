@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:idle_game/controller/crop_controller.dart';
@@ -27,7 +26,7 @@ class HomeView extends StatelessWidget {
         leading: Consumer2<UserStatsModel, CropModel>(builder: (context, userModel, cropModel, child) {
           return IconButton(
             iconSize: KSizer.setIconS,
-            icon: Icon(Icons.settings),
+            icon: const Icon(Icons.settings),
             onPressed: () {
               cropCon.restartGame();
               userStatsCon.restartGame();
@@ -37,21 +36,21 @@ class HomeView extends StatelessWidget {
         title: Row(
           // ignore: prefer_const_literals_to_create_immutables
           children: [
-            PointWidget(isSpecialCoin: true),
+            const PointWidget(isSpecialCoin: true),
             SizedBox(width: KSizer.pointSizedBoxW),
-            PointWidget(isSpecialCoin: false),
-            Spacer(),
-            LevelWidget(),
+            const PointWidget(isSpecialCoin: false),
+            const Spacer(),
+            const LevelWidget(),
           ],
         ),
       ),
       body: SlidingUpPanel(
-        panel: SlidingPanelLayout(),
+        panel: const SlidingPanelLayout(),
         color: Colors.black,
         minHeight: KSizer.panelMinH,
         maxHeight: KSizer.panelMaxH,
         backdropEnabled: true,
-        body: CropPlotLayout(),
+        body: const CropPlotLayout(),
       ),
     );
   }

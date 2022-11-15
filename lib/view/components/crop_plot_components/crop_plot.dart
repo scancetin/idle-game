@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:idle_game/controller/crop_controller.dart';
 import 'package:idle_game/controller/user_stats_controller.dart';
@@ -30,12 +28,12 @@ class CropPlot extends StatelessWidget {
 
   Widget cropCardWidget(CropController cropCon) {
     return Card(
-      color: cropCon.cropSize() > plotId ? Colors.purple : Colors.black,
+      color: cropCon.cropSize() > plotId ? Colors.transparent : Colors.black,
       child: SizedBox(
         height: KSizer.cropPlotSize,
         width: KSizer.cropPlotSize,
         child: cropCon.cropSize() > plotId
-            ? Text(KCrop.cropNames[cropCon.cropByPlotId(plotId)])
+            ? ClipRRect(borderRadius: BorderRadius.circular(10), child: Image.asset(KCrop.cropImages[cropCon.cropByPlotId(plotId)], fit: BoxFit.cover))
             : cropCon.cropSize() == plotId
                 ? Icon(Icons.add, size: KSizer.cropAddIcon)
                 : null,
@@ -48,7 +46,7 @@ class CropPlot extends StatelessWidget {
         barrierDismissible: true,
         context: context,
         builder: (context) {
-          return AlertDialogLayout();
+          return const AlertDialogLayout();
         });
   }
 }

@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:idle_game/controller/user_stats_controller.dart';
 import 'package:idle_game/model/user_stats_model.dart';
@@ -17,7 +15,7 @@ class PointWidget extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(6),
       ),
       height: KSizer.pointH,
       width: KSizer.pointW,

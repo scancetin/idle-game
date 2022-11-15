@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_print
-
 import 'package:idle_game/controller/crop_controller.dart';
 import 'constants.dart';
 

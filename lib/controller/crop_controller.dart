@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter/cupertino.dart';
 import 'package:idle_game/controller/user_stats_controller.dart';
 import 'package:idle_game/model/crop_model.dart';
@@ -50,7 +48,6 @@ class CropController {
   void addCrop(int cropId, int level, UserStatsController userStatsCon) {
     cropModel.addCrop(cropId, level);
     userStatsCon.setCoin(-calcFuncs.calcCropPrice(KCrop.cropPrices[cropId], cropModel.cropSize, cropModel.invSize));
-    // userStatsCon.setCoinByType(isSpecialCoin, -KCrop.cropPrices[cropId]);
   }
 
   void cropLevelUp(int cropIndex, UserStatsController userStatsCon) {

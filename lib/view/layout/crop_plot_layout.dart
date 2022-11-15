@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, avoid_print, prefer_interpolation_to_compose_strings
-
 import 'package:flutter/material.dart';
 import 'package:idle_game/controller/crop_controller.dart';
 import 'package:idle_game/controller/user_stats_controller.dart';
@@ -38,7 +36,7 @@ class CropPlotLayout extends StatelessWidget {
                         cropCon.changeCurrentPlot(cropCon.currentPlot() - 1);
                       }
                     },
-                    icon: Icon(Icons.turn_left),
+                    icon: const Icon(Icons.turn_left),
                     iconSize: KSizer.setIconS * 2),
                 IconButton(
                     onPressed: () {
@@ -46,7 +44,7 @@ class CropPlotLayout extends StatelessWidget {
                         cropCon.changeCurrentPlot(cropCon.currentPlot() + 1);
                       }
                     },
-                    icon: Icon(Icons.turn_right),
+                    icon: const Icon(Icons.turn_right),
                     iconSize: KSizer.setIconS * 2),
               ],
             )

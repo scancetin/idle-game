@@ -5,7 +5,6 @@ import 'package:idle_game/controller/crop_controller.dart';
 import 'package:idle_game/controller/user_stats_controller.dart';
 import 'package:idle_game/util/calc_funtions.dart';
 import 'package:idle_game/util/constants.dart';
-import 'package:sizer/sizer.dart';
 
 class LevelUpCard extends StatelessWidget {
   final int index;
@@ -28,7 +27,7 @@ class LevelUpCard extends StatelessWidget {
               Card(
                 child: SizedBox(
                   width: KSizer.panelCropImage,
-                  child: Image.network("https://i.redd.it/vhdhdicjtvq41.jpg", fit: BoxFit.cover),
+                  child: ClipRRect(borderRadius: BorderRadius.circular(4), child: Image.asset(KCrop.cropImages[cropCon.cropByPlotId(index)], fit: BoxFit.cover)),
                 ),
               ),
               SizedBox(width: 10),
@@ -48,14 +47,16 @@ class LevelUpCard extends StatelessWidget {
               ),
               Spacer(),
               IconButton(
-                  onPressed: () {
-                    cropCon.addToInventory(index);
-                    cropCon.deleteCrop(index);
-                  },
-                  icon: Icon(
-                    Icons.inventory,
-                    size: KSizer.setIconS,
-                  )),
+                onPressed: () {
+                  cropCon.addToInventory(index);
+                  cropCon.deleteCrop(index);
+                },
+                icon: Image.asset(
+                  KCrop.guiImages[0],
+                  width: KSizer.setIconS,
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
               GestureDetector(
                 child: Card(
                   color: isBuyable ? Colors.greenAccent : Colors.grey,
