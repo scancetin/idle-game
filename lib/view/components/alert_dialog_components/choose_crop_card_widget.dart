@@ -13,7 +13,7 @@ class ChooseCropCardWidget extends StatelessWidget {
     UserStatsController userStatsCon = UserStatsController(context);
     CropController cropCon = CropController(context);
     CalcFunctions calcFuncs = CalcFunctions();
-    bool isBuyable = userStatsCon.getCoinByType(false) >= calcFuncs.calcCropPrice(KCrop.cropPrices[cropId], cropCon.cropSize(), cropCon.invSize());
+    bool isBuyable = userStatsCon.getCoinByType(false) >= calcFuncs.calcCropPrice(cropId, cropCon);
 
     return Card(
       color: Colors.brown,
@@ -42,7 +42,8 @@ class ChooseCropCardWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Text("Buy", style: TextStyle(fontWeight: FontWeight.bold, fontSize: KSizer.pointTextS)),
-                      Text(KCrop.cropPrices[cropId].toString(), style: TextStyle(fontWeight: FontWeight.bold, fontSize: KSizer.pointTextS)),
+                      Text(calcFuncs.calcMagnitude(calcFuncs.calcCropPrice(cropId, cropCon)),
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: KSizer.pointTextS)),
                     ],
                   ),
                 ),

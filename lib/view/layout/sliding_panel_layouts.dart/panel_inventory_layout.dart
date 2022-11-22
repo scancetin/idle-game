@@ -17,7 +17,7 @@ class PanelInventoryLayout extends StatelessWidget {
       color: Colors.blue,
       child: Consumer<CropModel>(builder: (context, cropModel, child) {
         return ListView.builder(
-          itemCount: cropCon.invSize() ?? 0,
+          itemCount: cropCon.invSize(),
           itemBuilder: (context, index) {
             return InventoryCard(index: index);
           },

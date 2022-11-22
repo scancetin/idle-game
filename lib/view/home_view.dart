@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:idle_game/controller/crop_controller.dart';
 import 'package:idle_game/controller/user_stats_controller.dart';

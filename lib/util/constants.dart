@@ -8,6 +8,39 @@ class KCrop {
   static const List<int> cropIncomes = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096];
   static const List<int> powerupsPrices = [32, 64, 128, 256, 512, 1024, 2048, 4096];
   static const List<String> powerupsNames = ["Coin", "Coin", "S Coin", "S Coin", "Water", "Fertilizer", "Growing", "Hourglass"];
+  static const List<String> numberFormat = [
+    "",
+    "K",
+    "M",
+    "B",
+    "T",
+    "aa",
+    "ab",
+    "ac",
+    "ad",
+    "ae",
+    "af",
+    "ag",
+    "ah",
+    "ai",
+    "aj",
+    "ak",
+    "al",
+    "am",
+    "an",
+    "ao",
+    "ap",
+    "aq",
+    "ar",
+    "as",
+    "at",
+    "au",
+    "av",
+    "aw",
+    "ax",
+    "ay",
+    "az",
+  ];
 
   static const List<String> cropImages = [
     "assets/crops/carrot.png",

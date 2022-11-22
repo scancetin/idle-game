@@ -33,7 +33,7 @@ class CropController {
     return cropModel.cropsLevel[cropIndex];
   }
 
-  int? invSize() {
+  int invSize() {
     return cropModel.invSize;
   }
 
@@ -47,7 +47,7 @@ class CropController {
 
   void addCrop(int cropId, int level, UserStatsController userStatsCon) {
     cropModel.addCrop(cropId, level);
-    userStatsCon.setCoin(-calcFuncs.calcCropPrice(KCrop.cropPrices[cropId], cropModel.cropSize, cropModel.invSize));
+    userStatsCon.setCoin(-calcFuncs.calcCropPrice(cropId, this));
   }
 
   void cropLevelUp(int cropIndex, UserStatsController userStatsCon) {

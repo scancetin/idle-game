@@ -26,7 +26,7 @@ class CropModel extends ChangeNotifier {
 
   List<String> get invCrop => _prefs.getStringList(_inventoryCrop) ?? [];
   List<String> get invLevel => _prefs.getStringList(_inventoryLevel) ?? [];
-  int? get invSize => _prefs.getStringList(_inventoryCrop)?.length;
+  int get invSize => _prefs.getStringList(_inventoryCrop)?.length ?? 0;
 
   Future addPlot() async {
     await _prefs.setInt(_plotSize, plotSize + 4);

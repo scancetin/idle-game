@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:idle_game/controller/crop_controller.dart';
 import 'package:idle_game/controller/user_stats_controller.dart';
@@ -20,7 +18,7 @@ class LevelUpCard extends StatelessWidget {
     return Card(
         color: Colors.amber,
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 10),
+          margin: const EdgeInsets.symmetric(horizontal: 10),
           height: KSizer.panelListTileH,
           child: Row(
             children: [
@@ -30,7 +28,7 @@ class LevelUpCard extends StatelessWidget {
                   child: ClipRRect(borderRadius: BorderRadius.circular(4), child: Image.asset(KCrop.cropImages[cropCon.cropByPlotId(index)], fit: BoxFit.cover)),
                 ),
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,7 +43,7 @@ class LevelUpCard extends StatelessWidget {
                   ),
                 ],
               ),
-              Spacer(),
+              const Spacer(),
               IconButton(
                 onPressed: () {
                   cropCon.addToInventory(index);
@@ -66,7 +64,7 @@ class LevelUpCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text("Upgrade", style: TextStyle(fontWeight: FontWeight.bold, fontSize: KSizer.pointTextS)),
-                        Text(calcFuncs.calcCropLevelUp(int.parse(cropCon.cropLevel(index)), KCrop.cropPrices[cropCon.cropByPlotId(index)]).toString(),
+                        Text(calcFuncs.calcMagnitude(calcFuncs.calcCropLevelUp(int.parse(cropCon.cropLevel(index)), KCrop.cropPrices[cropCon.cropByPlotId(index)])),
                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: KSizer.pointTextS)),
                       ],
                     ),

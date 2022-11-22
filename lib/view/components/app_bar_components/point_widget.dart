@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:idle_game/controller/user_stats_controller.dart';
 import 'package:idle_game/model/user_stats_model.dart';
+import 'package:idle_game/util/calc_funtions.dart';
 import 'package:idle_game/util/constants.dart';
 import 'package:provider/provider.dart';
 
@@ -11,6 +12,7 @@ class PointWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     UserStatsController userStatsCon = UserStatsController(context);
+    CalcFunctions calcFunc = CalcFunctions();
 
     return Container(
       decoration: BoxDecoration(
@@ -22,7 +24,7 @@ class PointWidget extends StatelessWidget {
       child: Center(
         child: Consumer<UserStatsModel>(builder: (context, model, child) {
           return Text(
-            "${userStatsCon.getCoinByType(isSpecialCoin)} 💰",
+            "${calcFunc.calcMagnitude(userStatsCon.getCoinByType(isSpecialCoin))} 💰",
             style: TextStyle(fontSize: KSizer.pointTextS, color: Colors.black),
           );
         }),

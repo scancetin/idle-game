@@ -24,13 +24,17 @@ class UserStatsController {
     return isSpecialCoin ? userModel.getSpecialCoin() : userModel.getCoin();
   }
 
+  int getXp() {
+    return userModel.getXp();
+  }
+
   void setCoin(int coin) {
     userModel.setCoin(coin);
   }
 
   void setXp(int xp) {
     userModel.setXp(xp);
-    userModel.setLevel(calcFuncs.calcLevel(userModel.getXp(), userModel.getLevel()));
+    userModel.setLevel(calcFuncs.calcLevel(this));
   }
 
   void idleIncome(CropController cropCon) {

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:idle_game/controller/crop_controller.dart';
 import 'package:idle_game/controller/user_stats_controller.dart';
-import 'package:idle_game/util/calc_funtions.dart';
 import 'package:idle_game/util/constants.dart';
 
 class PowerUpsCard extends StatelessWidget {
@@ -10,8 +8,6 @@ class PowerUpsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // CropController cropCon = CropController(context);
-    // CalcFunctions calcFuncs = CalcFunctions();
     UserStatsController userStatsCon = UserStatsController(context);
     bool isBuyable = userStatsCon.getCoinByType(false) >= KCrop.powerupsPrices[index];
 
